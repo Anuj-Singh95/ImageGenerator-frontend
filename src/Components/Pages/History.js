@@ -73,7 +73,9 @@ export default function CustomizedTables() {
       const jsonData = await response.json();
       console.log(jsonData);
       setData(jsonData);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error.message);
+    }
   };
   useEffect(() => {
     fetchData();
