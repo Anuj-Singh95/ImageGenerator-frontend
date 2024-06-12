@@ -50,6 +50,7 @@ export default function Example() {
       const response = await fetch(url, {
         method: "POST", // Use POST method
         headers: {
+          Accept: "application/json",
           "Content-Type": "application/json", // Set the content type to JSON
         },
         credentials: "include",
