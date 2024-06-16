@@ -62,9 +62,12 @@ export default function Signup() {
       console.log(result.success);
       if (result) localStorage.setItem("token", result.token);
 
-      const cookies = new Cookies(null, { path: "/" });
-      cookies.set("token", result.token);
-      console.log("saved token is : " + cookies.get("token"));
+      const cookie = new Cookie();
+      cookie.set("token", result.token, {
+        sameSite: "none",
+        secure: true,
+      });
+      console.log("saved token is : " + cookie.get("token"));
 
       setResponse(result); // Set the response state with the result
     } catch (err) {

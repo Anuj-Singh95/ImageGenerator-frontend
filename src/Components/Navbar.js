@@ -67,7 +67,7 @@ export default function Example() {
     setIsLogout(!islogout);
     localStorage.clear("token");
     // postData();
-    const cookies = new Cookies(null, { path: "/" });
+    const cookies = new Cookies();
     cookies.remove("token");
     window.location.reload();
   };
