@@ -12,6 +12,7 @@ import {
   Transition,
 } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import Cookies from "universal-cookie";
 
 const navigation = [
   { name: "Home", href: "/", current: true },
@@ -38,34 +39,36 @@ function classNames(...classes) {
 export default function Example() {
   const [data, setData] = useState({});
   const [islogout, setIsLogout] = useState(false);
-  const postData = async () => {
-    const url = `${process.env.REACT_APP_URI}/api/v1/logout`; // Replace with your API endpoint
-    console.log(url);
-    // const data = {
-    //   email,
-    //   password,
-    // }; // Replace with the data you want to send
+  // const postData = async () => {
+  //   const url = `${process.env.REACT_APP_URI}/api/v1/logout`; // Replace with your API endpoint
+  //   console.log(url);
+  //   // const data = {
+  //   //   email,
+  //   //   password,
+  //   // }; // Replace with the data you want to send
 
-    try {
-      const response = await fetch(url, {
-        method: "POST", // Use POST method
-        headers: {
-          "Content-Type": "application/json", // Set the content type to JSON
-        },
-        body: JSON.stringify({}), // Convert the data to JSON string
-      });
-      const result = await response.json();
-      console.log(result);
-      setData(result);
-    } catch (err) {
-      console.log(err.message);
-    }
-  };
+  //   try {
+  //     const response = await fetch(url, {
+  //       method: "POST", // Use POST method
+  //       headers: {
+  //         "Content-Type": "application/json", // Set the content type to JSON
+  //       },
+  //       body: JSON.stringify({}), // Convert the data to JSON string
+  //     });
+  //     const result = await response.json();
+  //     console.log(result);
+  //     setData(result);
+  //   } catch (err) {
+  //     console.log(err.message);
+  //   }
+  // };
   const logoutHandler = () => {
     //need to clear coookie also
     setIsLogout(!islogout);
     localStorage.clear("token");
-    postData();
+    // postData();
+    const cookies = new Cookies(null, { path: "/" });
+    cookies.remove("token");
     window.location.reload();
   };
   useEffect(() => {}, [islogout]);
