@@ -59,7 +59,7 @@ export default function LoginPage() {
 
       const cookies = new Cookies(null, { path: "/" });
       cookies.set("token", result.token);
-      console.log("saved token is : " + cookies.get(token));
+      console.log("saved token is : " + cookies.get("token"));
 
       setResponse(result); // Set the response state with the result
     } catch (err) {
