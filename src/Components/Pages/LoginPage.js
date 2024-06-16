@@ -57,7 +57,7 @@ export default function LoginPage() {
       console.log(result.success);
       if (result) localStorage.setItem("token", result.token);
 
-      const cookie = new Cookie();
+      const cookie = new Cookies();
       cookie.set("token", result.token, {
         sameSite: "none",
         secure: true,
