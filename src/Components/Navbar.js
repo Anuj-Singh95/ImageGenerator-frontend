@@ -12,7 +12,6 @@ import {
   Transition,
 } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import Cookies from "universal-cookie";
 
 const navigation = [
   { name: "Home", href: "/", current: true },
@@ -65,10 +64,8 @@ export default function Example() {
   const logoutHandler = () => {
     //need to clear coookie also
     setIsLogout(!islogout);
-    localStorage.clear("token");  
+    localStorage.clear("token");
     // postData();
-    const cookies = new Cookies();
-    cookies.remove("token");
     window.location.reload();
   };
   useEffect(() => {}, [islogout]);

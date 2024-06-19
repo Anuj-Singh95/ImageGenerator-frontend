@@ -18,7 +18,6 @@ import Button from "@mui/material/Button";
 import "./LoginPage.css";
 import bgImage from "../../images/background.jpg";
 import { Link, Navigate } from "react-router-dom";
-import Cookies from "universal-cookie";
 
 export default function LoginPage() {
   const [response, setResponse] = useState(null);
@@ -56,13 +55,6 @@ export default function LoginPage() {
       const result = await response.json();
       console.log(result.success);
       if (result) localStorage.setItem("token", result.token);
-
-      const cookie = new Cookies();
-      cookie.set("token", result.token, {
-        sameSite: "none",
-        secure: true,
-      });
-      console.log("saved token is : " + cookie.get("token"));
 
       setResponse(result); // Set the response state with the result
     } catch (err) {
