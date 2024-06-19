@@ -65,7 +65,7 @@ export default function Example() {
   const logoutHandler = () => {
     //need to clear coookie also
     setIsLogout(!islogout);
-    localStorage.clear("token");
+    localStorage.clear("token");  
     // postData();
     const cookies = new Cookies();
     cookies.remove("token");

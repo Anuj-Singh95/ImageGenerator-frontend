@@ -62,11 +62,12 @@ export default function CustomizedTables() {
         `${process.env.REACT_APP_URI}/api/v1/history`,
         {
           method: "POST",
-          credentials: "include",
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
+            authToken: localStorage.getItem("token"),
           },
+          credentials: "include",
           body: JSON.stringify({}),
         }
       );

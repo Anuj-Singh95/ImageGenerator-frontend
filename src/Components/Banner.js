@@ -31,6 +31,7 @@ export default function Example(props) {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json", // Set the content type to JSON
+          authToken: localStorage.getItem("token"),
         },
         credentials: "include",
         body: JSON.stringify(data), // Convert the data to JSON string
